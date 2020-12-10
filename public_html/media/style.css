@@ -1,0 +1,162 @@
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+main {
+    height: 100vh;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 75px;
+}
+
+/* ----------------------
+             Table
+-------------------------*/
+
+td,
+th,
+table {
+    border: 1px dashed grey;
+}
+
+td,
+th {
+    padding: 10px;
+}
+
+
+/* ----------------------
+             form
+-------------------------*/
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 150px;
+}
+.form-btn {
+    margin: 0;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+input,
+textarea,
+select {
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+}
+
+textarea {
+    resize: none;
+}
+
+.btn {
+    width: 250px;
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    background: #333333;
+    color: #fff;
+    font-size: 15px;
+}
+
+.btn:hover {
+    background: #666;
+    transition: all 0.4s;
+}
+
+.btn-link {
+
+}
+
+/* ----------------------
+             nav
+-------------------------*/
+
+nav {
+    /*position: fixed;*/
+    /*top: 0;*/
+    width: 100%;
+    background-color: black;
+
+}
+
+ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+    overflow: hidden;
+    margin-right: 100px;
+}
+
+li a {
+    display: block;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #333;
+}
+
+/* ----------------------
+             Products
+-------------------------*/
+main {
+    margin-top: 50px;
+}
+
+.container {
+    width: 1040px;
+    margin: 0 auto;
+}
+
+.pizza {
+    width: 100%;
+    height: 100vh;
+}
+
+.pizza-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+}
+
+.pizza-img {
+    cursor: pointer;
+    width: 300px;
+}
+
+.pizza-img:hover {
+    transform: translateY(-10px);
+    transition: transform 0.4s;
+}
+
+.pizza-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.disabled {
+    display: none;
+}
