@@ -23,7 +23,7 @@ class Navigation extends View
         $nav = [App::$router::getUrl('index') => 'Home'];
 
         if (App::$session->getUser()) {
-            if (App::$session->getUser()['email'] === 'test@test.lt') {
+            if (App::$session->getUser()['role'] === 'admin') {
                 return $nav + [
                         App::$router::getUrl('add') => 'Add',
                         App::$router::getUrl('list') => 'Edit',
