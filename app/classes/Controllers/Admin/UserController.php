@@ -19,7 +19,7 @@ class UserController extends AuthController
     {
         parent::__construct();
         $this->page = new BasePage([
-            'title' => 'Users',
+            'title' => 'Users Status Changer',
         ]);
         $this->form = new RoleForm();
 
@@ -34,7 +34,7 @@ class UserController extends AuthController
 
             foreach ($rows as $id => $row) {
 
-                if ($clean_inputs['id'] == $id) {
+                if ($clean_inputs['row_id'] == $id) {
                     $row['role'] = $clean_inputs['role'];
                     App::$db->updateRow('users', $id, $row);
                 }

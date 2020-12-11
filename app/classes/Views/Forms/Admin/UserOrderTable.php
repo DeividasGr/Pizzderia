@@ -14,7 +14,7 @@ class UserOrderTable extends Table
         $rows = App::$db->getRowsWhere('orders', ['email' => $_SESSION['email']]);
 
         foreach ($rows as $id => &$row) {
-            // timestamp logic
+
             $timeStamp = date('Y-m-d H:i:s', $row['timestamp']);
             $difference = abs(strtotime('now') - strtotime($timeStamp));
 
@@ -38,3 +38,4 @@ class UserOrderTable extends Table
             'rows' => $rows
         ]);
     }
+}

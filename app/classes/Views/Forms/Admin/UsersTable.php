@@ -26,15 +26,13 @@ class UsersTable extends Table
             unset($row['email'], $row['password']);
         }
 
-        /**
-         * Table generate: header array + rows data
-         */
+
         parent::__construct([
             'headers' => [
-                'ID',
                 'Name',
+                'Status',
+                'ID',
                 'Role',
-                'Status'
             ],
             'rows' => $rows
         ]);

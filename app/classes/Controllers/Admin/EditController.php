@@ -20,7 +20,7 @@ class EditController extends AuthController
         parent:: __construct();
         $this->form = new EditForm();
         $this->page = new BasePage([
-            'title' => 'Edit Item',
+            'title' => 'Edit Pizza',
         ]);
     }
 
@@ -40,7 +40,7 @@ class EditController extends AuthController
             var_dump($clean_inputs);
 
             App::$db->updateRow('pizzas', $row_id, $clean_inputs);
-            header('Location: /list');
+            header('Location: /');
         }
 
 

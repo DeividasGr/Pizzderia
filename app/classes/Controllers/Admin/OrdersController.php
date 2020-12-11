@@ -19,7 +19,7 @@ class OrdersController extends AuthController
     {
         parent::__construct();
         $this->page = new BasePage([
-            'title' => 'Orders',
+            'title' => 'Orders Information',
         ]);
         $this->form = new StatusForm();
     }
@@ -32,7 +32,7 @@ class OrdersController extends AuthController
             $clean_inputs = $this->form->values();
 
             foreach ($rows as $id => $row) {
-                if ($clean_inputs['row_id'] == $id) {
+                if ($clean_inputs['id'] == $id) {
                     $row['status'] = $clean_inputs['status'];
                     App::$db->updateRow('orders', $id, $row);
                 }

@@ -1,6 +1,6 @@
-<table>
+<table class="table">
     <tr>
-        <?php foreach ($data['headers']  as $header): ?>
+        <?php foreach ($data['headers'] as $header): ?>
             <th><?php print $header; ?></th>
         <?php endforeach; ?>
     </tr>
@@ -12,3 +12,4 @@
         </tr>
     <?php endforeach; ?>
 </table>
+

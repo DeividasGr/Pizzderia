@@ -20,7 +20,7 @@ class AdminOrderTable extends Table
         foreach ($rows as $id => &$row) {
 
             $user = App::$db->getRowWhere('users', ['email' => $row['email']]);
-            $row['full_name'] = $user['name'];
+            $row['full_name'] = $user['full_name'];
 
 
             $timeStamp = date('Y-m-d H:i:s', $row['timestamp']);
@@ -30,7 +30,7 @@ class AdminOrderTable extends Table
             $hours = floor($difference / 3600);
             $minutes = floor(($difference - ($hours * 3600)) / 60);
 
-            $result = "{$days} days {$hours}:{$minutes} hours";
+            $result = "{$days} days {$hours} h : {$minutes} min";
 
             $row['timestamp'] = $result;
 
@@ -39,13 +39,12 @@ class AdminOrderTable extends Table
             unset($row['email'], $row['status']);
         }
 
-
         parent::__construct([
             'headers' => [
                 'ID',
-                'Username',
                 'Pizza Name',
                 'Time Ago',
+                'Username',
                 'Status'
             ],
             'rows' => $rows

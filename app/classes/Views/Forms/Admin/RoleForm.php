@@ -10,7 +10,8 @@ class RoleForm extends Form
     {
         parent::__construct([
             'attr' => [
-                'method' => 'POST'
+                'method' => 'POST',
+                'class' => 'form-btn'
             ],
             'fields' => [
                 'row_id' => [
