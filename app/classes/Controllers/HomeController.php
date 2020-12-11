@@ -41,7 +41,7 @@ class HomeController extends \App\Abstracts\Controller
                     $this->link = new Link([
                         'link' => "{$url_path}?id={$id}",
                         'class' => 'link',
-                        'text' => 'EDIT'
+                        'text' => 'Edit'
                     ]);
 
                     $row['link'] = $this->link->render();

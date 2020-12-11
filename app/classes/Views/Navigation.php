@@ -23,12 +23,20 @@ class Navigation extends View
         $nav = [App::$router::getUrl('index') => 'Home'];
 
         if (App::$session->getUser()) {
-            return $nav + [
-                    App::$router::getUrl('add') => 'Add',
-                    App::$router::getUrl('my') => 'My',
-                    App::$router::getUrl('list') => 'List',
-                    App::$router::getUrl('logout') => 'Logout',
-                ];
+            if (App::$session->getUser()['email'] === 'test@test.lt') {
+                return $nav + [
+                        App::$router::getUrl('add') => 'Add',
+                        App::$router::getUrl('list') => 'Edit',
+                        App::$router::getUrl('admin_orders') => 'Orders',
+                        App::$router::getUrl('admin_users') => 'Users',
+                        App::$router::getUrl('logout') => 'Logout',
+                    ];
+            } else {
+                return $nav + [
+                        App::$router::getUrl('user_orders') => 'Orders',
+                        App::$router::getUrl('logout') => 'Logout',
+                    ];
+            }
         } else {
             return $nav + [
                     App::$router::getUrl('register') => 'Register',

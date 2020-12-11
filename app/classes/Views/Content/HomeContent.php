@@ -39,9 +39,9 @@ class HomeContent extends GuestController
 
         if (isset($_POST['row_id'])) {
 
-            if ($_POST['row_id'] === 'ORDER') {
+            if ($_POST['row_id'] === 'Order') {
                 $rows = App::$db->getRowsWhere('orders');
-                $pizza_id = 1;
+                $pizza_id = 0;
 
                 foreach ($rows as $id => $row) {
                     $pizza_id++;
@@ -50,9 +50,9 @@ class HomeContent extends GuestController
                 App::$db->insertRow('orders', [
                     'email' => $_SESSION['email'],
                     'id' => $pizza_id,
-                    'status' => 'active',
                     'name' => $_POST['name'],
-                    'timestamp' => time()
+                    'timestamp' => time(),
+                    'status' => 'active'
                 ]);
             }
         }
@@ -63,7 +63,7 @@ class HomeContent extends GuestController
         if (!App::$session->getUser()) {
             $this->link = new Link([
                 'link' => '/login',
-                'text' => 'LOGIN'
+                'text' => 'Login'
             ]);
 
             return $this->link->render();
@@ -73,7 +73,7 @@ class HomeContent extends GuestController
             if (App::$session->getUser()['role'] === 'admin') {
                 $this->link = new Link([
                     'link' => '/add',
-                    'text' => 'ADD PIZZA'
+                    'text' => 'Create'
                 ]);
 
                 return $this->link->render();

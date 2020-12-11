@@ -11,7 +11,6 @@ class app
 {
     public static FileDB $db;
     public static Session  $session;
-    public static Cookie  $cookie;
     public static Router $router;
 
     public function __construct()
@@ -19,7 +18,6 @@ class app
         self::$db = new FileDB(DB_FILE);
         self::$db->load();
         self::$session = new Session();
-        self::$cookie = new Cookie('testCookie');
         self::$router = new Router();
     }
 

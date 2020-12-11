@@ -20,6 +20,7 @@
                     </div>
                 </div>
             <?php endforeach; ?>
+            <?php print $data['redirect']; ?>
         </div>
     </section>
 </main>

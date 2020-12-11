@@ -16,7 +16,7 @@ class OrderForm extends Form
             'fields' => [
                 'row_id' => [
                     'type' => 'hidden',
-                    'value' => 'ORDER'
+                    'value' => 'Order'
                 ],
                 'name' => [
                     'type' => 'hidden',
