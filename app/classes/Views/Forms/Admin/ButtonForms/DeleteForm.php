@@ -7,7 +7,7 @@ use Core\Views\Form;
 
 class DeleteForm extends Form
 {
-public function __construct()
+public function __construct($value = null)
 {
     parent::__construct([
         'attr' => [
@@ -17,6 +17,7 @@ public function __construct()
         'fields' => [
             'row_id' => [
                 'type' => 'hidden',
+                'value' => $value,
                 'validators' => [
                     'validate_row_exists',
                 ],

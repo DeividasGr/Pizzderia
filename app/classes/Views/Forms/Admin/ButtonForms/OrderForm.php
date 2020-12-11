@@ -6,7 +6,7 @@ use Core\Views\Form;
 
 class OrderForm extends Form
 {
-    public function __construct()
+    public function __construct($value = null)
     {
         parent::__construct([
             'attr' => [
@@ -16,9 +16,11 @@ class OrderForm extends Form
             'fields' => [
                 'row_id' => [
                     'type' => 'hidden',
-                    'validators' => [
-                        'validate_row_exists',
-                    ],
+                    'value' => 'ORDER'
+                ],
+                'name' => [
+                    'type' => 'hidden',
+                    'value' => $value
                 ],
             ],
             'buttons' => [

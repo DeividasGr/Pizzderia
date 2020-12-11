@@ -5,69 +5,71 @@ namespace App\Controllers;
 use App\app;
 use App\Views\BasePage;
 use App\Views\Content\HomeContent;
+use App\Views\Forms\Admin\ButtonForms\DeleteForm;
+use App\Views\Forms\Admin\ButtonForms\OrderForm;
 use Core\View;
+use Core\Views\Link;
 
 class HomeController extends \App\Abstracts\Controller
 {
-    protected $home_content;
+    protected $page;
+    protected $link;
 
-    /**
-     * Controller constructor.
-     *
-     * We can write logic common for all
-     * other methods
-     *
-     * For example, create $page object,
-     * set it's header/navigation
-     * or check if user has a proper role
-     *
-     * Goal is to prepare $page
-     */
+
     public function __construct()
     {
-        $this->home_content = new HomeContent();
+        $this->page = new BasePage([
+            'title' => 'Pizzderia'
+        ]);
     }
 
-    /**
-     * This method builds or sets
-     * current $page content
-     * renders it and returns HTML
-     *
-     * So if we have ex.: ProductsController,
-     * it can have methods responsible for
-     * index() (main page, usualy a list),
-     * view() (preview single),
-     * create() (form for creating),
-     * edit() (form for editing)
-     * delete()
-     *
-     * These methods can then be called on each page accordingly, ex.:
-     * add.php:
-     * $controller = new PixelsController();
-     * print $controller->add();
-     *
-     *
-     * my.php:
-     * $controller = new ProductsController();
-     * print $controller->my();
-     *
-     * @return string|null
-     */
 
     function index(): ?string
     {
-//        var_dump($this->home_content->homeContent());
-//        if ($this->home_content->homeContent()['order']->validate()) {
-//
-//        }
+        $home_content = new HomeContent();
 
+        $home_content->HomeContent();
+
+        $rows = App::$db->getRowsWhere('pizzas');
+
+        $url_path = App::$router::getUrl('edit');
+
+
+        foreach ($rows as $id => &$row) {
+            if (App::$session->getUser()) {
+                if (App::$session->getUser()['role'] === 'admin') {
+                    $this->link = new Link([
+                        'link' => "{$url_path}?id={$id}",
+                        'class' => 'link',
+                        'text' => 'EDIT'
+                    ]);
+
+                    $row['link'] = $this->link->render();
+
+                    $deleteForm = new DeleteForm($id);
+                    $row['delete'] = $deleteForm->render();
+                    $row['order'] = '';
+
+                } elseif (App::$session->getUser()['role'] === 'user') {
+                    $orderForm = new OrderForm($row['name']);
+                    $row['order'] = $orderForm->render();
+                    $row['link'] = '';
+                    $row['delete'] = '';
+                }
+            } else {
+                $row['order'] = '';
+                $row['link'] = '';
+                $row['delete'] = '';
+            }
+        }
         $content = new View([
             'title' => 'Choose our pizzas',
-            'products' => $this->home_content->homeContent()
+            'redirect' => $home_content->redirect(),
+            'products' => $rows
         ]);
 
         $page = new BasePage([
-            'title' => 'Select you pizza',
+            'title' => 'Pizzeria',
             'content' => $content->render(ROOT . '/app/templates/content/index.tpl.php')
         ]);
 

@@ -157,6 +157,35 @@ main {
     justify-content: space-around;
 }
 
-.disabled {
-    display: none;
+.btn-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.btn-container a {
+   text-decoration: none;
+    color: #fff;
+}
+.edit-btn {
+    width: 100px;
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    background: #333333;
+    font-size: 15px;
+}
+.btn-link {
+    width: 100px;
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    background: #333333;
+    color: #fff;
+    font-size: 15px;
 }
