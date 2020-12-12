@@ -1,6 +1,9 @@
 <main>
     <section class="pizza">
-        <h1 class="header"><?php print $data['title']; ?></h1>
+        <div class="login-redirect">
+            <h1 class="header"><?php print $data['title']; ?></h1>
+            <?php print $data['redirect']; ?>
+        </div>
         <div class="pizza-list container">
             <?php foreach ($data['products'] as $product): ?>
                 <div>
@@ -20,7 +23,6 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-            <?php print $data['redirect']; ?>
         </div>
     </section>
 </main>
